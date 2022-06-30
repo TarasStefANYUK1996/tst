@@ -1,0 +1,39 @@
+.wrapper{
+   
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 100px;
+    margin-bottom: 30px;
+}
+.text__add-left{
+    position: relative;
+}
+.todoText{
+    display: block;
+     height: calc(2.25rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #bdbdbd;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    width: 100%;
+
+}
+.textAdd{
+    position: absolute;
+    right: 20px;
+   top: calc(50% - 11px);
+
+
+}
+.svg-inline--fa{
+    background-color:#b9aeae;
+    padding: 5px;
+    cursor: pointer;
+}
