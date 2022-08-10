@@ -92,6 +92,7 @@ function App() {
         cookies.set('data', data, { path: '/' })
 
       }
+      // 45
       // setData(data);
       // setStyle("opaAct");
       // setTimeout(() => {
