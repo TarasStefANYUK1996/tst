@@ -13,6 +13,7 @@ function App() {
   const changeOptVal = (value) => {
     setOptionValue(value);
   }
+  //12
   const deletei = (e, id) => {
     if (e.closest(".delete") != null) {
       let newd = [...data];
