@@ -5,14 +5,15 @@ import TaskList from './components/TaskList/TaskList';
 import './App.css';
 import Notice from "./components/notice/notice";
 import Cookies from 'universal-cookie';
-
+// const hosting='http://localhost:3003';
+const hosting='https://raw.githubusercontent.com/TarasStefANYUK1996/new/main/src/server/db.json';
 function App() {
   let ret;
   const cookies = new Cookies();
   const [style, setStyle] = useState(null);
   const [notText, setNotText] = useState("");
   const upData = async (method, id = '', status, newData = null) => {
-    let datal = await getData('http://localhost:3003/posts/' + id);
+    let datal = await getData(hosting+'/posts/' + id);
     if (method === 'POST') {
       datal = newData;
     } else
@@ -20,7 +21,7 @@ function App() {
         datal.state = status;
       }
     try {
-      await fetch('http://localhost:3003/posts/' + id, {
+      await fetch(hosting+'/posts/' + id, {
         method: method, // или 'PUT'
         body: JSON.stringify(datal), // данные могут быть 'строкой' или {объектом}!
         headers: {
@@ -141,7 +142,7 @@ function App() {
     if (cookies.get('data')) {
       setData(cookies.get('data'));
     } else {
-      getData("http://localhost:3003/posts").then((data) => {
+      getData(hosting+"/posts").then((data) => {
         setData(data);
         cookies.set('data', data, { path: '/' });
 
