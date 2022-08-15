@@ -91,12 +91,12 @@ function App() {
 
      let datas=[
           {
-            "text": "Действие 10 ",
+            "text": "Задание № 1",
             "state": "active",
             "id": 3
           },
           {
-            "text": "Действие первое ",
+            "text": "Задание № 2",
             "state": "active",
             "id": 1
           }
