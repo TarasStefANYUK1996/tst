@@ -1,12 +1,16 @@
 .wrapper{
-   
-    display: grid;
-    grid-template-columns: 2fr 1fr;
+      display: grid;
+    grid-template-columns:3fr 1fr;;
     grid-gap: 100px;
+ 
     margin-bottom: 30px;
 }
 .text__add-left{
-    position: relative;
+    
+    display: flex;
+    align-items: center;
+    padding-right: 7px;
+    border: 1px solid #bdbdbd;
 }
 .todoText{
     display: block;
@@ -19,21 +23,34 @@
     color: #212529;
     background-color: #fff;
     background-clip: padding-box;
-    border: 1px solid #bdbdbd;
+    border: none;
+    outline: none;
     border-radius: 0.25rem;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     width: 100%;
 
 }
 .textAdd{
-    position: absolute;
-    right: 20px;
-   top: calc(50% - 11px);
-
-
+   top: calc(50% - 14px);
 }
 .svg-inline--fa{
     background-color:#b9aeae;
     padding: 5px;
     cursor: pointer;
 }
+.options{
+    border:none;
+    outline: none;
+    padding: 0 15px;
+}
+
+
+  @media screen and (max-width: 767px) {
+  .wrapper{
+    grid-template-columns:auto;
+    grid-gap: 20px;
+   }
+   .options{
+    padding: 8px 15px;
+   }
+  }

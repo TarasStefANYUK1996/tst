@@ -1,39 +1,45 @@
 import React from "react";
-import '../TaskItem/TaskItem.css'
+import "./TaskItem.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCalendarXmark } from "@fortawesome/free-solid-svg-icons"
-import { faCheckSquare } from "@fortawesome/free-solid-svg-icons"
-import { faArrowLeftRotate } from '@fortawesome/free-solid-svg-icons';
-const TaskItem = (props) => {
-    const deletes = () => {
-        return (
-            <div className="delete" onClick={props.delete} >
-                <FontAwesomeIcon icon={faCalendarXmark}>
-                </FontAwesomeIcon>
-            </div>
-        );
-    }
-    const save = () => {
-        return (
-            <div className="save" onClick={props.delete}>
-                <FontAwesomeIcon icon={faCheckSquare}>
-                </FontAwesomeIcon>
-            </div>
-        );
-    }
-    const complete = () => {
-        return (
-            <div className="save" onClick={props.delete}>
-                <FontAwesomeIcon icon={faArrowLeftRotate}>
-                </FontAwesomeIcon>
-            </div>
-        );
-    }
-    return (
-        <div className="text">{props.text.text}
-            {deletes()}
-            {props.text.state === "active" ? save() : complete()}
-        </div>
-    );
+import {
+  faCalendarXmark,
+  faCheckSquare,
+  faArrowLeftRotate,
+} from "@fortawesome/free-solid-svg-icons";
+
+function Deletes({ deletesj }) {
+  return (
+    <div className="delete" onClick={deletesj} role="presentation">
+      <FontAwesomeIcon icon={faCalendarXmark} />
+    </div>
+  );
+}
+function Save({ deletesj }) {
+  return (
+    <div className="save" onClick={deletesj} role="presentation">
+      <FontAwesomeIcon icon={faCheckSquare} />
+    </div>
+  );
+}
+function Complete({ deleted }) {
+  return (
+    <div className="save" onClick={deleted} role="presentation">
+      <FontAwesomeIcon icon={faArrowLeftRotate} />
+    </div>
+  );
+}
+
+function TaskItem({ text, deleted }) {
+  return (
+    <div className="text">
+      {text.text}
+      <Deletes deletesj={deleted} />
+      {text.state === "active" ? (
+        <Save deletesj={deleted} />
+      ) : (
+        <Complete deletesj={deleted} />
+      )}
+    </div>
+  );
 }
 export default TaskItem;
