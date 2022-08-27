@@ -5,7 +5,9 @@ function Notice({ styles, notText }) {
     <div className={`message-box ${styles}`}>
       <div className="notice">
         {notText.type}
-        <p className="notice__text"> {notText.text}</p>
+        {notText.text !== undefined ? (
+          <p className="notice__text"> {notText.text}</p>
+        ) : null}
       </div>
     </div>
   );

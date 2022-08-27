@@ -10,6 +10,7 @@ function App() {
   const [notText, setNotText] = useState("");
   const [data, setData] = useState([]);
   const [optionValue, setOptionValue] = useState("active");
+  const [optLength, setOptLength] = useState({ active: 5 });
 
   const cookies = useMemo(() => new Cookies(), []);
   const show = async (inp) => {
@@ -38,12 +39,18 @@ function App() {
         setData(cookies.get("data"));
       };
       fft();
+    } else {
+      setNotText({ type: "Невозможно добавить пустой елемент " });
+      setStyle("opaAct");
+      setTimeout(() => {
+        setStyle(false);
+      }, 3000);
     }
   };
   const changeOptVal = (value) => {
     setOptionValue(value);
   };
-  const deletei = async (e, id) => {
+  const deletei = (e, id) => {
     const serch = data.findIndex((element) => element.id === id);
     if (e.closest(".delete") != null) {
       if (data[serch].state === "delete") {
@@ -75,6 +82,7 @@ function App() {
     setTimeout(() => {
       setStyle(false);
     }, 3000);
+    setData(cookies.get("data"));
   };
 
   useEffect(() => {
@@ -95,10 +103,21 @@ function App() {
       ];
 
       setData(datas);
-
       cookies.set("data", datas, { path: "/" });
     }
   }, [cookies]);
+  useEffect(() => {
+    const filt = (stat) => {
+      const res = data.filter((item) => item.state === stat);
+      return res.length;
+    };
+
+    setOptLength({
+      active: filt("active"),
+      complete: filt("complete"),
+      delete: filt("delete"),
+    });
+  }, [data, cookies]);
   const ret =
     style != null ? <Notice styles={style} notText={notText} /> : null;
 
@@ -106,7 +125,11 @@ function App() {
     <div className="App">
       {ret}
       <p>Список дел на сегодня:</p>
-      <AddTask changeOptVal={changeOptVal} show={(e) => show(e)} />
+      <AddTask
+        changeOptVal={changeOptVal}
+        show={(e) => show(e)}
+        optLength={optLength}
+      />
       <TaskList deleted={deletei} arr={data} filter={optionValue} />
     </div>
   );

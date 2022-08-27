@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import "./addTask.css";
 
-function AddTask({ show, changeOptVal }) {
+function AddTask({ show, changeOptVal, optLength }) {
   const [optionValue, setOptionValue] = useState("active");
   const [inputVal, setInputVal] = useState("");
 
@@ -49,9 +49,9 @@ function AddTask({ show, changeOptVal }) {
         value={optionValue}
         onChange={(e) => changeStatus(e)}
       >
-        <option value="active">Активные</option>
-        <option value="complete">Завершенные</option>
-        <option value="delete">Удаленные</option>
+        <option value="active">Активные ({optLength.active})</option>
+        <option value="complete">Завершенные ({optLength.complete})</option>
+        <option value="delete">Удаленные ({optLength.delete})</option>
       </select>
     </div>
   );

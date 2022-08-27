@@ -21,9 +21,9 @@ function Save({ deletesj }) {
     </div>
   );
 }
-function Complete({ deleted }) {
+function Complete({ deletesj }) {
   return (
-    <div className="save" onClick={deleted} role="presentation">
+    <div className="save" onClick={deletesj} role="presentation">
       <FontAwesomeIcon icon={faArrowLeftRotate} />
     </div>
   );
