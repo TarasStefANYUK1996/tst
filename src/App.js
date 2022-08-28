@@ -13,7 +13,7 @@ function App() {
   const [optLength, setOptLength] = useState({ active: 5 });
 
   const cookies = useMemo(() => new Cookies(), []);
-  const show = async (inp) => {
+  const show = (inp) => {
     if (inp.text.replace(/^\s+|\s+$/g, "")) {
       setNotText({ type: "Добавили новое задание: ", text: inp.text });
       setStyle("opaAct");

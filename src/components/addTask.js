@@ -6,18 +6,17 @@ import "./addTask.css";
 function AddTask({ show, changeOptVal, optLength }) {
   const [optionValue, setOptionValue] = useState("active");
   const [inputVal, setInputVal] = useState("");
-
-  const newTask = async () => {
+  function changeInput(e) {
+    setInputVal(e.target.value);
+  }
+  const newTask = () => {
+    setInputVal("");
     show({
       text: inputVal,
       state: "active",
     });
-    setInputVal("");
-    document.querySelector(".todoText").value = "";
   };
-  const changeInput = (e) => {
-    setInputVal(e.target.value);
-  };
+
   const changeStatus = (event) => {
     setOptionValue(event.target.value);
   };
@@ -32,9 +31,9 @@ function AddTask({ show, changeOptVal, optLength }) {
           className="todoText"
           maxLength="400"
           onChange={(e) => changeInput(e)}
+          value={inputVal}
         />
         <span
-          value={inputVal}
           className="textAdd"
           id="textAdd"
           onClick={newTask}
